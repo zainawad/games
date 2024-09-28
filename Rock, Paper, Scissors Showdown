@@ -1,8 +1,6 @@
 import random
 
-def print_choice(choice):
-    if choice == "rock":
-        print("""
+ascii_rock=("""
             _______
         ---'   ____)
               (_____)
@@ -10,8 +8,7 @@ def print_choice(choice):
               (____)
         ---.__(___)
         """)
-    elif choice == "paper":
-        print("""
+ascii_paper =("""
              _______
         ---'    ____)____
                    ______)
@@ -19,8 +16,7 @@ def print_choice(choice):
                   _______)
         ---.__________)
         """)
-    elif choice == "scissors":
-        print("""
+ascii_scissors=("""
             _______
         ---'   ____)____
                   ______)
@@ -30,11 +26,11 @@ def print_choice(choice):
         """)
 
 choices = ["rock", "paper", "scissors"]
-computer = random.choice(choices)
+computer = random.choice(["rock", "paper", "scissors"])
 
 print("Welcome to the Rock, Paper, Scissors game")
 
-rules = input("Press Enter to continue or type 'Help' for the rules: ").capitalize()
+rules = input("Press Enter to continue or type 'Help' for the rules: ").lower()
 
 if rules == "Help":
     print("""**** RULES ****
@@ -44,22 +40,33 @@ if rules == "Help":
 4) Paper covers Rock -> Paper wins.
 """)
 
-player = input("Enter your choice (rock, paper, scissors): ").lower()
 
-if player not in choices:
+user_choice = input("Enter your choice (rock, paper, scissors): ").lower()
+#user choices
+if user_choice not in choices:
     print("Invalid choice. Please run the program again and choose rock, paper, or scissors.")
+elif user_choice=="rock":
+    print(f"you chose{ascii_rock}")
+elif user_choice=="paper":
+    print(f"you chose {ascii_paper}")
 else:
-    print(f"\nYou chose: {player}")
-    print_choice(player)
-    
-    print(f"Computer chose: {computer}")
-    print_choice(computer)
-    
-    if player == computer:
-        print("The game ended in a tie")
-    elif (player == "rock" and computer == "scissors") or \
-         (player == "scissors" and computer == "paper") or \
-         (player == "paper" and computer == "rock"):
-        print("You win!")
-    else:
-        print("You lose!")
+    print(f"you chose {ascii_scissors}")
+#computer choices
+if computer=="rock":
+    print(f"computer chose{ascii_rock}")
+elif computer=="paper":
+    print(f"computer chose {ascii_paper}")
+else:
+    print(f"computer chose {ascii_scissors}")
+   #result show
+if user_choice == computer:
+    print("The game ended in a tie")
+
+elif (user_choice == "rock" and computer == "scissors") or\
+         (user_choice == "scissors" and computer == "paper") or\
+         (user_choice == "paper" and computer == "rock"):
+         print("you are win")
+
+
+else:
+    print("You lose!")
