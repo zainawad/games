@@ -1,0 +1,63 @@
+import random
+
+def print_choice(choice):
+    if choice == "lion":
+        print("""
+               ,     ,
+              |\\___/|
+             /       \\
+            (  @  @  )
+             \\  _Y_ /
+              `-^-' 
+        """)
+    elif choice == "elephant":
+        print("""
+               __
+             .'  '.
+          _.-'/  |  \\
+         |    |  |  0|
+         \\_   \\_\\   _\\
+           `-._,_.-'  
+        """)
+    elif choice == "mouse":
+        print("""
+          ()__()
+          (o   o)
+          (  -  ) 
+           `~!~`
+        """)
+
+choices = ["lion", "elephant", "mouse"]
+computer = random.choice(choices)
+
+print("Welcome to the Wild Adventure Game!")
+
+rules = input("Press Enter to continue or type 'Help' for the rules: ").capitalize()
+
+if rules == "Help":
+    print("""**** RULES ****
+1) Choose an animal and the computer will choose one too.
+2) Lion kills Mouse -> Lion wins.
+3) Mouse scares Elephant -> Mouse wins.
+4) Elephant stomps on Lion -> Elephant wins.
+""")
+
+player = input("Enter your choice (lion, elephant, mouse): ").lower()
+
+if player not in choices:
+    print("Invalid choice. Please run the program again and choose lion, elephant, or mouse.")
+else:
+    print(f"\nYou chose: {player}")
+    print_choice(player)
+    
+    print(f"Computer chose: {computer}")
+    print_choice(computer)
+    
+    if player == computer:
+        print("It's a tie! Both chose the same animal.")
+    elif (player == "lion" and computer == "mouse") or \
+         (player == "mouse" and computer == "elephant") or \
+         (player == "elephant" and computer == "lion"):
+        print("You win! Your animal is stronger!")
+    else:
+        print("You lose! The computer's animal wins this time.")
