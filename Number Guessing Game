@@ -1,0 +1,14 @@
+import random
+#def high():
+
+geuss_number =int(input("guess a number between 1 to 10 ")  )
+random_guess=random.randint(1,10)
+while geuss_number  !=  random_guess :
+  if geuss_number > random_guess:
+        print("It's too high!")
+  else:
+        print("It's too low!")
+  geuss_number =int(input("guess a again! number between 1 to 10 ")  )
+ 
+print("congratulation ! you guessed the number!")  
+
